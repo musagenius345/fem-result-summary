@@ -1,0 +1,218 @@
+.container {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: var(--spacing);
+  padding-left: var(--spacing);
+}
+
+@media (min-width: 576px) {
+  .container {
+    max-width: 510px;
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+@media (min-width: 768px) {
+  .container {
+    max-width: 700px;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    max-width: 920px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1130px;
+  }
+}
+.grid {
+  grid-column-gap: var(--grid-spacing-horizontal);
+  grid-row-gap: var(--grid-spacing-vertical);
+  display: grid;
+  grid-template-columns: 1fr;
+  margin: 0;
+}
+
+@media (min-width: 992px) {
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(0%, 1fr));
+  }
+  .section {
+    border-radius: var(--curved-border);
+  }
+}
+.grid > * {
+  min-width: 0;
+}
+
+:root {
+  --curved-border: 22px;
+  --clr-lavender: hsl(241, 100%, 89%);
+  --spacing: 1rem;
+  --grid-spacing-horizontal: var(--spacing);
+  --grid-spacing-vertical: 0px;
+  --background-gradient: linear-gradient(to bottom, hsl(252, 100%, 67%), hsl(241, 81%, 54%));
+  --circle-gradient: linear-gradient(to bottom, hsla(256, 72%, 46%, 1), hsla(241, 72%, 46%, 0));
+  --clr-primary: hsl(224, 60%, 27%);
+  --clr-neutral: white;
+  --clr-blue-900: 224 30% 27%;
+  --clr-blue-300: hsl(241, 100%, 89%);
+  --fw-large: 900;
+  --fw-mid: 500;
+}
+
+html {
+  line-height: 1.6;
+  font-size: clamp(1.125rem, 1.234rem + 0.2vw, 1.35rem);
+}
+
+body {
+  margin: 0;
+}
+
+.score-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 1rem;
+  background-color: var(--score-bg);
+  padding: 0.7rem 0.8rem;
+  margin-block: calc(var(--spacing) * 0.5);
+}
+.score-container .score-category {
+  color: var(--score-text);
+}
+.score-body {
+  padding: var(--spacing);
+}
+.score-parent {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+.score-value {
+  color: var(--clr-primary);
+}
+.score-value:not(.score-overall) {
+  font-weight: var(--fw-mid);
+}
+.score-overall {
+  color: var(--gray);
+  color: hsla(var(--clr-blue-900)/0.7);
+}
+
+.summary-title {
+  font-size: 110%;
+  color: hsl(var(--clr-blue-900));
+}
+
+.result {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: var(--background-gradient);
+  text-align: center;
+  border-end-start-radius: var(--curved-border);
+  border-end-end-radius: var(--curved-border);
+}
+.result-total {
+  font-size: 2.4rem;
+  font-weight: var(--fw-large, 900);
+}
+.result-score {
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  width: 8rem;
+  height: 8rem;
+  /* background: linear-gradient(to bottom, hsla(255.09 82.064% 46.078% / 1), hsl(259.11 61.774% 58.502% / 0.28)); */
+  background: var(--circle-gradient);
+}
+.result-score__number {
+  color: var(--clr-lavender);
+}
+.result-review {
+  text-wrap: balance;
+  color: var(--clr-lavender);
+}
+.result-comment {
+  margin-block: 0.3em;
+  font-size: 130%;
+}
+.result-heading {
+  color: var(--clr-lavender);
+  /* justify-items: flex-start; */
+}
+
+.white {
+  color: hsl(0, 0%, 100%);
+}
+
+.button {
+  width: 100%;
+  padding-block: var(--spacing);
+  border-radius: 8px;
+  font-size: 120%;
+  color: var(--clr-neutral);
+  background: var(--clr-primary);
+  outline: 0;
+  border: 0;
+}
+.button:is(:hover, :focus) {
+  outline: 0;
+  border: 0;
+  --clr-primary: hsl(241.59 81.116% 44.314%) ;
+}
+
+[data-reaction] {
+  --score-clr: 0 100% 67%;
+  --score-text: hsl(var(--score-clr));
+  --score-bg: hsla(var(--score-clr) / 0.1);
+}
+
+[data-memory] {
+  --score-clr: 39 100% 56%;
+  --score-text: hsl(var(--score-clr));
+  --score-bg: hsla(var(--score-clr) / 0.1);
+}
+
+[data-verbal] {
+  --score-clr: 166 100% 37%;
+  --score-text: hsl(var(--score-clr));
+  --score-bg: hsla(var(--score-clr) / 0.1);
+}
+
+[data-visual] {
+  --score-clr: 234 85% 45%;
+  --score-text: hsl(var(--score-clr));
+  --score-bg: hsla(var(--score-clr) / 0.1);
+}
+
+.attribution {
+  font-size: 11px;
+  text-align: center;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
+
+@media (min-width: 700px) {
+  :root {
+    --curved-border: 22px;
+  }
+  .result {
+    border: var(--curved-border);
+  }
+  .main {
+    padding-inline: 3rem;
+    padding-block: 1.5rem;
+  }
+  .section {
+    border: var(--curved-border);
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
